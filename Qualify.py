@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-def qualify_combo(input_name):
+def combo(input_name):
 	string = get_config_value(PKG, input_name, str)
 	string = ''.join(input_name.split(' ')).lower()
 	if ',' not in string:
@@ -17,7 +17,7 @@ def qualify_combo(input_name):
 			return None
 		return {'axis' : split[0], 'value' : split[1]}
 
-def qualify_int(input_name):
+def integer(input_name):
 	data = get_config_value(PKG, input_name, int)
 	try:
 		data = int(data)
@@ -26,7 +26,7 @@ def qualify_int(input_name):
 	else:
 		return data
 
-def qualify_sequence(input_name):
+def sequence(input_name):
 	seq_name = get_config_value(PKG, input_name, str)
 	if ''.join(seq_name.split()).lower() == 'none':
 		input_errors.append('Encountered "None" for required sequence {}" '.format(input_name))
