@@ -58,8 +58,8 @@ Z_TRANSLATE = qualify_int('z_translate')
 BED_HEIGHT = qualify_int('bed_height')
 device.log('Plant Type: {}'.format(PLANT_TYPE))
 
-audrey_retrieve_sequence_id = qualify_sequence(get_config_value(PKG, 'audrey_retrieve', str))
-audrey_return_sequence_id = qualify_sequence(get_config_value(PKG, 'audrey_return', str))
+audrey_retrieve_sequence_id = qualify_sequence('audrey_retrieve')
+audrey_return_sequence_id = qualify_sequence('audrey_return')
 
 if len(input_errors):
 	for err in input_errors:
