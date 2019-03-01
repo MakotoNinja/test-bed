@@ -35,6 +35,8 @@ input_errors = []
 
 
 SERVO_PIN = qualify_int('servo_pin')
+SERVO_OPEN_ANGLE = qualify_int('servo_open_angle')
+SERVO_CLOSE_ANGLE = qualify_int('servo_close_angle')
 
 '''
 water_tool_retrieve_sequence_id = qualify_sequence(get_config_value(PKG, 'tool_water_retrieve', str)) #optional
@@ -52,7 +54,14 @@ else:
 
 device.write_pin(PIN_LIGHTS, 1, 0)
 
-plants = app.get_plants()
-device.log('Plants: {}'.format(json.dumps(plants)))
+all_plants = app.get_plants()
+device.log('All Plants: {}'.format(json.dumps(all_plants)))
+
+target_plants = [];
+for plant in all_plants:
+	if plant['name'].lower() == 'asparagus':
+		target_plants.appeend(plant)
+
+device.log('Target Plants: {}'.format(json.dumps(target_plants)))
 
 device.write_pin(PIN_LIGHTS, 0, 0)
