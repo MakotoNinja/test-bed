@@ -53,6 +53,6 @@ else:
 device.write_pin(PIN_LIGHTS, 1, 0)
 
 plants = app.get_plants()
-device.log('Plants: {}'.format(json.dumps(plantts)))
+device.log('Plants: {}'.format(json.dumps(plants)))
 
 device.write_pin(PIN_LIGHTS, 0, 0)
