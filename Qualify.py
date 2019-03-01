@@ -19,8 +19,7 @@ def combo(PKG, input_name):
 			split[1] = int(split[1])
 		except:
 			input_errors.append('Right side of comma should be an Integer. Found: {}'.format(split[1]))
-			return None
-		return {'axis' : split[0], 'value' : split[1]}
+	return {'axis' : split[0], 'value' : split[1]}
 
 def integer(PKG, input_name):
 	data = get_config_value(PKG, input_name, int)
