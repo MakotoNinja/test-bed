@@ -21,8 +21,12 @@ def qualify_int(name):
 		#device.log('Qualify Integer "{}": {}'.format(name, data))
 		return data
 
-def qualify_sequence(seq_name):
-	if len(''.join(seq_name.split())) > 0 and seq_name.lower() != 'none':
+def qualify_sequence(input_name):
+	seq_name = get_config_value(PKG, input_name, str)
+	if ''.join(seq_name.split()).lower() == 'none':
+		input_errors.append('Encountered "None" for required sequence {}" '.format(input_name))
+		return None
+	elif len(''.join(seq_name.split())) > 0:
 		try:
 			sequence_id = app.find_sequence_by_name(name = seq_name)
 			return sequence_id
