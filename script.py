@@ -14,7 +14,7 @@ def qualify_int(name):
 	data = get_config_value(PKG, name, int)
 	try:
 		data = int(data)
-		device.log('Qualify Integer "{}": {}'.format(name, data))
+		device.log('Qualify Integer "{}": {}, {}'.format(name, data, PKG))
 		return data
 	except:
 		input_errors.append('Must be integer for input: {}.'.format(name))
