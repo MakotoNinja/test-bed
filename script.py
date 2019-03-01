@@ -40,7 +40,7 @@ def chomp():
 		device.wait(500)
 
 PIN_LIGHTS = 7
-PKG = 'Audry II'
+PKG = 'Audrey II'
 
 input_errors = []
 
