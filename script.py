@@ -12,12 +12,14 @@ from Coordinate import Coordinate
 input_errors = []
 def qualify_int(name):
 	data = get_config_value(PKG, name, int)
+	device.log('Qualify Integer "{}": {}'.format(name, data))
 	try:
 		data = int(data)
-		device.log('Qualify Integer "{}": {}, {}'.format(name, data, PKG))
-		return data
 	except:
 		input_errors.append('Must be integer for input: {}.'.format(name))
+	else:
+		#device.log('Qualify Integer "{}": {}'.format(name, data))
+		return data
 
 def qualify_sequence(seq_name):
 	if len(''.join(seq_name.split())) > 0 and seq_name.lower() != 'none':
