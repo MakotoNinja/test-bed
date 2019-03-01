@@ -12,29 +12,23 @@ from Coordinate import Coordinate
 input_errors = []
 def qualify_int(name):
 	data = get_config_value(PKG, name, int)
-	#device.log('Qualify Integer "{}": {}'.format(name, data))
 	try:
 		data = int(data)
 	except:
 		input_errors.append('Must be integer for input: {}.'.format(name))
 	else:
-		#device.log('Qualify Integer "{}": {}'.format(name, data))
 		return data
 
 def qualify_sequence(input_name):
 	seq_name = get_config_value(PKG, input_name, str)
-	device.log('Sequence Input {}: {}'.format(input_name, seq_name))
 	if ''.join(seq_name.split()).lower() == 'none':
-		device.log('Sequence name is "NONE"')
 		input_errors.append('Encountered "None" for required sequence {}" '.format(input_name))
 		return False
 	elif len(''.join(seq_name.split())) > 0:
 		try:
-			device.log('Sequence name passed "None": {}'.format(seq_name))
 			sequence_id = app.find_sequence_by_name(name = seq_name)
 			return sequence_id
 		except:
-			device.log('Sequence name not found: "{}"'.format(seq_name))
 			input_errors.append('Failed to find sequence ID for {}'.format(seq_name))
 	return None
 

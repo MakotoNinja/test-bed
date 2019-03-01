@@ -1,9 +1,9 @@
 {
-	"package": "Audry II",
+	"package": "Audrey II",
 	"language": "python",
 	"author": "MakotoNinja",
 	"description": "A farmware for a custom tool for Farmbot.",
-	"version": "1.0.2",
+	"version": "1.0.1",
 	"min_os_version_major": 6,
 	"url": "https://raw.githubusercontent.com/MakotoNinja/AudryII/master/manifest.json",
 	"zip": "https://github.com/MakotoNinja/AudryII/archive/master.zip",
