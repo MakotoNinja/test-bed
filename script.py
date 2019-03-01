@@ -20,7 +20,6 @@ PIN_LIGHTS = 7
 PKG = 'Audrey II'
 
 input_errors = []
-device.log('INIT')
 SERVO_PIN = Qualify.integer(PKG, 'servo_pin')
 SERVO_OPEN_ANGLE = Qualify.integer(PKG, 'servo_open_angle')
 SERVO_CLOSE_ANGLE = Qualify.integer(PKG, 'servo_close_angle')
@@ -34,8 +33,8 @@ BITE_ADVANCE = Qualify.integer(PKG, 'bite_advance')
 audrey_retrieve_sequence_id = Qualify.sequence(PKG, 'audrey_retrieve')
 audrey_return_sequence_id = Qualify.sequence(PKG, 'audrey_return')
 
-if len(input_errors):
-	for err in input_errors:
+if len(Qualify.errors):
+	for err in Qualify.errors:
 		device.log(err, 'error', ['toast'])
 	sys.exit()
 else:
