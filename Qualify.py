@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 
 from farmware_tools import device, app, get_config_value
-PKG = 'Audrey II'
 
-def combo(input_name):
+def combo(PKG, input_name):
 	string = get_config_value(PKG, input_name, str)
 	string = ''.join(input_name.split(' ')).lower()
 	if ',' not in string:
@@ -20,8 +19,9 @@ def combo(input_name):
 			return None
 		return {'axis' : split[0], 'value' : split[1]}
 
-def integer(input_name):
+def integer(PKG, input_name):
 	data = get_config_value(PKG, input_name, int)
+	device.log('Qualify.integer: {}'.format(input_name))
 	try:
 		data = int(data)
 	except:
@@ -29,7 +29,7 @@ def integer(input_name):
 	else:
 		return data
 
-def sequence(input_name):
+def sequence(PKG, input_name):
 	seq_name = get_config_value(PKG, input_name, str)
 	if ''.join(seq_name.split()).lower() == 'none':
 		input_errors.append('Encountered "None" for required sequence {}" '.format(input_name))

@@ -20,19 +20,19 @@ PIN_LIGHTS = 7
 PKG = 'Audrey II'
 
 input_errors = []
-
-SERVO_PIN = Qualify.integer('servo_pin')
-SERVO_OPEN_ANGLE = Qualify.integer('servo_open_angle')
-SERVO_CLOSE_ANGLE = Qualify.integer('servo_close_angle')
+device.log('INIT')
+SERVO_PIN = Qualify.integer(PKG, 'servo_pin')
+SERVO_OPEN_ANGLE = Qualify.integer(PKG, 'servo_open_angle')
+SERVO_CLOSE_ANGLE = Qualify.integer(PKG, 'servo_close_angle')
 PLANT_TYPE = get_config_value(PKG, 'plant_type', str).lower()
-Z_TRANSLATE = Qualify.integer('z_translate')
-BED_HEIGHT = Qualify.integer('bed_height')
-NUM_BITES = Qualify.integer('num_bites')
-BITE_ADVANCE = Qualify.integer('bite_advance')
-DUMP_OFFSET = Qualify.combo('dump_offset')
+Z_TRANSLATE = Qualify.integer(PKG, 'z_translate')
+BED_HEIGHT = Qualify.integer(PKG, 'bed_height')
+NUM_BITES = Qualify.integer(PKG, 'num_bites')
+BITE_ADVANCE = Qualify.integer(PKG, 'bite_advance')
+DUMP_OFFSET = Qualify.combo(PKG, 'dump_offset')
 
-audrey_retrieve_sequence_id = Qualify.sequence('audrey_retrieve')
-audrey_return_sequence_id = Qualify.sequence('audrey_return')
+audrey_retrieve_sequence_id = Qualify.sequence(PKG, 'audrey_retrieve')
+audrey_return_sequence_id = Qualify.sequence(PKG, 'audrey_return')
 
 if len(input_errors):
 	for err in input_errors:
