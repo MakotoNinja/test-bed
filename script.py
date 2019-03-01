@@ -60,7 +60,7 @@ device.log('All Plants: {}'.format(json.dumps(all_plants)))
 target_plants = [];
 for plant in all_plants:
 	if plant['name'].lower() == 'asparagus':
-		target_plants.appeend(plant)
+		target_plants.append(plant)
 
 device.log('Target Plants: {}'.format(json.dumps(target_plants)))
 
