@@ -4,33 +4,10 @@
  ' A farmware for a custom tool for Farmbot
 '''
 
-import os, sys, json
+import os, sys, json, Qualify
 from random import randint
 from farmware_tools import device, app, get_config_value
 from Coordinate import Coordinate
-
-input_errors = []
-def qualify_int(name):
-	data = get_config_value(PKG, name, int)
-	try:
-		data = int(data)
-	except:
-		input_errors.append('Must be integer for input: {}.'.format(name))
-	else:
-		return data
-
-def qualify_sequence(input_name):
-	seq_name = get_config_value(PKG, input_name, str)
-	if ''.join(seq_name.split()).lower() == 'none':
-		input_errors.append('Encountered "None" for required sequence {}" '.format(input_name))
-		return False
-	elif len(''.join(seq_name.split())) > 0:
-		try:
-			sequence_id = app.find_sequence_by_name(name = seq_name)
-			return sequence_id
-		except:
-			input_errors.append('Failed to find sequence ID for {}'.format(seq_name))
-	return None
 
 def chomp():
 	for i in range(3):
@@ -50,7 +27,11 @@ SERVO_CLOSE_ANGLE = qualify_int('servo_close_angle')
 PLANT_TYPE = get_config_value(PKG, 'plant_type', str).lower()
 Z_TRANSLATE = qualify_int('z_translate')
 BED_HEIGHT = qualify_int('bed_height')
-device.log('Plant Type: {}'.format(PLANT_TYPE))
+NUM_BITES = qualify_int('num_bites')
+BITE_ADVANCE = qualify_int('bite_advance')
+DUMP_OFFSET = qualify_combo('dump_offset')
+
+if strip_str(DUMP_OFFSET).split()
 
 audrey_retrieve_sequence_id = qualify_sequence('audrey_retrieve')
 audrey_return_sequence_id = qualify_sequence('audrey_return')
@@ -89,4 +70,5 @@ for site in target_plants:
 
 device.execute(audrey_return_sequence_id)
 
+device.home('all')
 device.write_pin(PIN_LIGHTS, 0, 0)
