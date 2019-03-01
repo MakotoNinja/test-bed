@@ -6,6 +6,7 @@ errors = []
 def combo(PKG, input_name):
 	string = get_config_value(PKG, input_name, str)
 	string = ''.join(input_name.split(' ')).lower()
+	device.log('String: {}'.format(string))
 	if string == 'none':
 		input_errors.append('Encountered "None" for required sequence {}" '.format(input_name))
 	elif ',' not in string:
