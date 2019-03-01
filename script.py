@@ -17,6 +17,7 @@ def qualify_int(name):
 	except:
 		input_errors.append('Must be integer for input: {}.'.format(name))
 	else:
+		device.log('Qualify Integer "{}": {}'.format(name, data))
 		return data
 
 def qualify_sequence(seq_name):
