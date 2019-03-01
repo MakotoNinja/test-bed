@@ -14,11 +14,10 @@ def qualify_int(name):
 	data = get_config_value(PKG, name, int)
 	try:
 		data = int(data)
-	except:
-		input_errors.append('Must be integer for input: {}.'.format(name))
-	else:
 		device.log('Qualify Integer "{}": {}'.format(name, data))
 		return data
+	except:
+		input_errors.append('Must be integer for input: {}.'.format(name))
 
 def qualify_sequence(seq_name):
 	if len(''.join(seq_name.split())) > 0 and seq_name.lower() != 'none':
