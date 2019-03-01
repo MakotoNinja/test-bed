@@ -8,17 +8,17 @@ def combo(PKG, input_name):
 	string = ''.join(input_name.split(' ')).lower()
 	device.log('String: {}'.format(string))
 	if string == 'none':
-		input_errors.append('Encountered "None" for required sequence {}" '.format(input_name))
+		errors.append('Encountered "None" for required sequence {}" '.format(input_name))
 	elif ',' not in string:
-		input_errors.append('Combo field does not contain a comma: {}'.format(input_name))
+		errors.append('Combo field does not contain a comma: {}'.format(input_name))
 	else:
 		split = string.split(',')
 		if split[0] not in 'xy':
-			input_errors.append('Left side of comma must be "X" or "Y". Found: {}'.format(split[0]))
+			errors.append('Left side of comma must be "X" or "Y". Found: {}'.format(split[0]))
 		try:
 			split[1] = int(split[1])
 		except:
-			input_errors.append('Right side of comma should be an Integer. Found: {}'.format(split[1]))
+			errors.append('Right side of comma should be an Integer. Found: {}'.format(split[1]))
 	return {'axis' : split[0], 'value' : split[1]}
 
 def integer(PKG, input_name):
@@ -26,14 +26,14 @@ def integer(PKG, input_name):
 	try:
 		data = int(data)
 	except:
-		input_errors.append('Must be integer for input: {}.'.format(input_name))
+		errors.append('Must be integer for input: {}.'.format(input_name))
 	else:
 		return data
 
 def sequence(PKG, input_name):
 	seq_name = get_config_value(PKG, input_name, str)
 	if ''.join(seq_name.split()).lower() == 'none':
-		input_errors.append('Encountered "None" for required sequence {}" '.format(input_name))
+		errors.append('Encountered "None" for required sequence {}" '.format(input_name))
 		return False
 	elif len(''.join(seq_name.split())) > 0:
 		try:
