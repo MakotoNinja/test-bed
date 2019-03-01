@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+from farmware_tools import device, app, get_config_value
+PKG = 'Audrey II'
+
 def combo(input_name):
 	string = get_config_value(PKG, input_name, str)
 	string = ''.join(input_name.split(' ')).lower()
