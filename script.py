@@ -11,7 +11,7 @@ from Coordinate import Coordinate
 
 input_errors = []
 def qualify_int(name):
-	data = get_config_value(PKG, config_name=name, int)
+	data = get_config_value(PKG, name, int)
 	try:
 		data = int(data)
 	except:
@@ -43,7 +43,7 @@ input_errors = []
 SERVO_PIN = qualify_int('servo_pin')
 SERVO_OPEN_ANGLE = qualify_int('servo_open_angle')
 SERVO_CLOSE_ANGLE = qualify_int('servo_close_angle')
-PLANT_TYPE = get_config_value(PKG, config_name='plant_type', str).lower()
+PLANT_TYPE = get_config_value(PKG, 'plant_type', str).lower()
 Z_TRANSLATE = qualify_int('z_translate')
 BED_HEIGHT = qualify_int('bed_height')
 device.log('Plant Type: {}'.format(PLANT_TYPE))
