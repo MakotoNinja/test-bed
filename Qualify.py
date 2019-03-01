@@ -5,7 +5,7 @@ from farmware_tools import device, app, get_config_value
 errors = []
 def combo(PKG, input_name):
 	string = get_config_value(PKG, input_name, str)
-	string = ''.join(input_name.split(' ')).lower()
+	string = ''.join(string.split(' ')).lower()
 	device.log('String: {}'.format(string))
 	if string == 'none':
 		device.log('Name of {}: {}'.format(input_nname, string))
