@@ -31,8 +31,6 @@ NUM_BITES = Qualify.integer('num_bites')
 BITE_ADVANCE = Qualify.integer('bite_advance')
 DUMP_OFFSET = Qualify.combo('dump_offset')
 
-if strip_str(DUMP_OFFSET).split()
-
 audrey_retrieve_sequence_id = Qualify.sequence('audrey_retrieve')
 audrey_return_sequence_id = Qualify.sequence('audrey_return')
 
