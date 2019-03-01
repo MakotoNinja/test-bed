@@ -5,15 +5,15 @@ from farmware_tools import device, app, get_config_value
 errors = []
 def combo(PKG, input_name):
 	string = get_config_value(PKG, input_name, str)
-	device.log('String: {}'.format(string))
 	string = ''.join(input_name.split(' ')).lower()
-	if ',' not in string:
+	if string == 'none':
+		input_errors.append('Encountered "None" for required sequence {}" '.format(input_name))
+	elif ',' not in string:
 		input_errors.append('Combo field does not contain a comma: {}'.format(input_name))
 	else:
 		split = string.split(',')
 		if split[0] not in 'xy':
 			input_errors.append('Left side of comma must be "X" or "Y". Found: {}'.format(split[0]))
-			return None
 		try:
 			split[1] = int(split[1])
 		except:
