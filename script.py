@@ -10,11 +10,18 @@ from farmware_tools import device, app, get_config_value
 from Coordinate import Coordinate
 
 def chomp():
-	for i in range(3):
+	for i in range(NUM_BITES):
 		device.set_servo_angle(SERVO_PIN, SERVO_OPEN_ANGLE)
-		device.wait(500)
+		coord.set_axis_position('z', BED_HEIGHT - (i * BITE_ADVANCE))
+		coord.move_abs();
 		device.set_servo_angle(SERVO_PIN, SERVO_CLOSE_ANGLE)
-		device.wait(500)
+		coord.set_axis_position('z', BED_HEIGHT + 100)
+		coord.move_abs();
+		coord.set_offset_axis_position(DUMP_OFFSET['axis'], DUMP_OFFSET['value'])
+		coord.move_abs();
+		device.set_servo_angle(SERVO_PIN, SERVO_OPEN_ANGLE)
+		coord.set_offset_axis_position(DUMP_OFFSET['axis'], 0)
+		coord.move_abs();
 
 PIN_LIGHTS = 7
 PKG = 'Audrey II'
@@ -59,8 +66,8 @@ coord.move_abs()
 for site in target_plants:
 	coord.set_coordinate(site['x'], site['y'], Z_TRANSLATE)
 	coord.move_abs()
-	coord.set_axis_position('z', BED_HEIGHT)
-	coord.move_abs()
+	#coord.set_axis_position('z', BED_HEIGHT)
+	#coord.move_abs()
 	chomp()
 	coord.set_axis_position('z', Z_TRANSLATE)
 	coord.move_abs()
