@@ -12,7 +12,7 @@ from Coordinate import Coordinate
 input_errors = []
 def qualify_int(name):
 	data = get_config_value(PKG, name, int)
-	device.log('Qualify Integer "{}": {}'.format(name, data))
+	#device.log('Qualify Integer "{}": {}'.format(name, data))
 	try:
 		data = int(data)
 	except:
