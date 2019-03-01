@@ -46,6 +46,7 @@ SERVO_CLOSE_ANGLE = qualify_int('servo_close_angle')
 PLANT_TYPE = get_config_value(PKG, 'plant_type', str).lower()
 Z_TRANSLATE = qualify_int('z_translate')
 BED_HEIGHT = qualify_int('bed_height')
+device.log('Plant Type: {}'.format(PLANT_TYPE))
 
 audrey_retrieve_sequence_id = qualify_sequence(get_config_value(PKG, 'audrey_retrieve', str))
 audrey_return_sequence_id = qualify_sequence(get_config_value(PKG, 'audrey_return', str))
@@ -64,7 +65,7 @@ for plant in all_plants:
 		target_plants.append(plant)
 
 if not len(target_plants):
-	device.log('No plants found with name: {}'.format(PLANT_TYPE))
+	device.log('No plants found with name: "{}"'.format(PLANT_TYPE))
 	sys.exit()
 
 device.log('Target Plants: {}'.format(json.dumps(target_plants)))
