@@ -15,11 +15,13 @@ def chomp():
 		coord.set_axis_position('z', BED_HEIGHT - (i * BITE_ADVANCE))
 		coord.move_abs();
 		device.set_servo_angle(SERVO_PIN, SERVO_CLOSE_ANGLE)
+		device.wait(500)
 		coord.set_axis_position('z', BED_HEIGHT + 100)
 		coord.move_abs();
 		coord.set_offset_axis_position(DUMP_OFFSET['axis'], DUMP_OFFSET['value'])
 		coord.move_abs();
 		device.set_servo_angle(SERVO_PIN, SERVO_OPEN_ANGLE)
+		device.wait(250)
 		coord.set_offset_axis_position(DUMP_OFFSET['axis'], 0)
 		coord.move_abs();
 
