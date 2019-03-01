@@ -4,8 +4,8 @@ from farmware_tools import device, app, get_config_value
 
 errors = []
 def combo(PKG, input_name):
-	#string = get_config_value(PKG, input_name, str)
-	string = 'X, X'
+	string = get_config_value(PKG, input_name, str)
+	device.log('String: {}'.format(string))
 	string = ''.join(input_name.split(' ')).lower()
 	if ',' not in string:
 		input_errors.append('Combo field does not contain a comma: {}'.format(input_name))
