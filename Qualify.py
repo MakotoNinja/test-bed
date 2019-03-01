@@ -23,7 +23,6 @@ def combo(PKG, input_name):
 
 def integer(PKG, input_name):
 	data = get_config_value(PKG, input_name, int)
-	device.log('Qualify.integer: {}'.format(input_name))
 	try:
 		data = int(data)
 	except:

@@ -28,7 +28,7 @@ Z_TRANSLATE = Qualify.integer(PKG, 'z_translate')
 BED_HEIGHT = Qualify.integer(PKG, 'bed_height')
 NUM_BITES = Qualify.integer(PKG, 'num_bites')
 BITE_ADVANCE = Qualify.integer(PKG, 'bite_advance')
-#DUMP_OFFSET = Qualify.combo(PKG, 'dump_offset')
+DUMP_OFFSET = Qualify.combo(PKG, 'dump_offset')
 
 audrey_retrieve_sequence_id = Qualify.sequence(PKG, 'audrey_retrieve')
 audrey_return_sequence_id = Qualify.sequence(PKG, 'audrey_return')
