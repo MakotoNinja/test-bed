@@ -9,7 +9,10 @@ class Coordinate:
 
 	def get_axis_position(self, axis):
 		return self.coordinate_node['args'][axis]
-
+	'''
+	 ' @axis - str - can only be 'x', 'y' or 'z'
+	 ' @pos  - int - number in millimeters to position axis
+	'''
 	def set_axis_position(self, axis, pos):
 		self.coordinate_node['args'][axis] = pos
 

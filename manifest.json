@@ -3,15 +3,20 @@
 	"language": "python",
 	"author": "MakotoNinja",
 	"description": "A farmware for a custom for Farmbot.",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"min_os_version_major": 6,
 	"url": "https://raw.githubusercontent.com/MakotoNinja/AudryII/master/manifest.json",
 	"zip": "https://github.com/MakotoNinja/AudryII/archive/master.zip",
 	"executable": "python",
 	"args": ["AudryII-master/script.py"],
 	"config": [
+		{"name": "audrey_retrieve", "label": "Audrey II Retrieve", "value": "" },
+		{"name": "audrey_return", "label": "Audreey II Return", "value": "" },
 		{"name": "servo_pin", "label": "Servo Pin", "value": 4 },
 		{"name": "servo_open_angle", "label": "Servo Open Angle", "value": 65 },
-		{"name": "servo_close_angle", "label": "Servo Close Angle", "value": 110 }
+		{"name": "servo_close_angle", "label": "Servo Close Angle", "value": 110 },
+		{"name": "plant_type", "label": "Target Plant Name", "value": "" },
+		{"name": "z_translate", "label": "Z Height When Translating", "value": 0 },
+		{"name": "bed_height", "label": "Garden Bed Height", "value": 0 }
 	]
 }

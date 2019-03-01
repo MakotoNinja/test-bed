@@ -28,22 +28,27 @@ def qualify_sequence(seq_name):
 			input_errors.append('Failed to find sequence ID for {}'.format(seq_name))
 	return None
 
+def chomp():
+	for i in range(3):
+		device.set_servo_angle(SERVO_PIN, SERVO_OPEN_ANGLE)
+		device.wait(500)
+		device.set_servo_angle(SERVO_PIN, SERVO_CLOSE_ANGLE)
+		device.wait(500)
+
 PIN_LIGHTS = 7
 PKG = 'AudryII'
 
 input_errors = []
 
-
 SERVO_PIN = qualify_int('servo_pin')
 SERVO_OPEN_ANGLE = qualify_int('servo_open_angle')
 SERVO_CLOSE_ANGLE = qualify_int('servo_close_angle')
+PLANT_TYPE = get_config_value(PKG, 'plant_type', str).lower()
+Z_TRANSLATE = qualify_int('z_translate')
+BED_HEIGHT = qualify_int('bed_height')
 
-'''
-water_tool_retrieve_sequence_id = qualify_sequence(get_config_value(PKG, 'tool_water_retrieve', str)) #optional
-water_tool_return_sequence_id = qualify_sequence(get_config_value(PKG, 'tool_water_return', str)) #optional
-weeder_tool_retrieve_sequence_id = qualify_sequence(get_config_value(PKG, 'tool_weed_retrieve', str))
-weeder_tool_return_sequence_id = qualify_sequence(get_config_value(PKG, 'tool_weed_return', str))
-'''
+audrey_retrieve_sequence_id = qualify_sequence(get_config_value(PKG, 'audrey_retrieve', str))
+audrey_return_sequence_id = qualify_sequence(get_config_value(PKG, 'audrey_return', str))
 
 if len(input_errors):
 	for err in input_errors:
@@ -52,16 +57,31 @@ if len(input_errors):
 else:
 	device.log('No config errors detected')
 
-device.write_pin(PIN_LIGHTS, 1, 0)
-
 all_plants = app.get_plants()
-device.log('All Plants: {}'.format(json.dumps(all_plants)))
-
 target_plants = [];
 for plant in all_plants:
-	if plant['name'].lower() == 'asparagus':
+	if plant['name'].lower() == PLANT_TYPE:
 		target_plants.append(plant)
 
+if not len(target_plants):
+	device.log('No plants found with name: {}'.format(PLANT_TYPE))
+	sys.exit()
+
 device.log('Target Plants: {}'.format(json.dumps(target_plants)))
+device.write_pin(PIN_LIGHTS, 1, 0)
+
+device.execute(audrey_retrieve_sequence_id)
+coord = Coordinate(device.get_current_position('x'), device.get_current_position('y'), Z_TRANSLATE)
+coord.move_abs()
+for site in target_plants:
+	coord.set_coordinate(site['x'], site['y'], Z_TRANSLATE)
+	coord.move_abs()
+	coord.set_axis_position('z', BED_HEIGHT)
+	coord.move_abs()
+	chomp()
+	coord.set_axis_position('z', Z_TRANSLATE)
+	coord.move_abs()
+
+device.execute(audrey_return_sequence_id)
 
 device.write_pin(PIN_LIGHTS, 0, 0)
