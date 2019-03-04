@@ -1,26 +1,15 @@
 {
-	"package": "Audrey II",
+	"package": "Test Bed",
 	"language": "python",
 	"author": "MakotoNinja",
-	"description": "A farmware for a custom tool for Farmbot.",
+	"description": "Farmware Test Bed",
 	"version": "1.0.3",
 	"min_os_version_major": 6,
-	"url": "https://raw.githubusercontent.com/MakotoNinja/AudreyII/master/manifest.json",
-	"zip": "https://github.com/MakotoNinja/AudreyII/archive/master.zip",
+	"url": "https://raw.githubusercontent.com/MakotoNinja/test-bed/master/manifest.json",
+	"zip": "https://github.com/MakotoNinja/test-bed/archive/master.zip",
 	"executable": "python",
-	"args": ["AudreyII-master/script.py"],
+	"args": ["test-bed-master/script.py"],
 	"config": [
-		{"name": "audrey_retrieve", "label": "Audrey II Retrieve", "value": "None" },
-		{"name": "audrey_return", "label": "Audrey II Return", "value": "None" },
-		{"name": "servo_pin", "label": "Servo Pin", "value": 4 },
-		{"name": "servo_open_angle", "label": "Audrey Open Angle", "value": 0 },
-		{"name": "servo_close_angle", "label": "Audrey Close Angle", "value": 0 },
-		{"name": "servo_bite_angle", "label": "Audrey Bite Angle", "value": 0 },
-		{"name": "plant_type", "label": "Target Plant Name", "value": "" },
-		{"name": "z_translate", "label": "Z Height When Translating", "value": 0 },
-		{"name": "bed_height", "label": "Garden Bed Height", "value": 0 },
-		{"name": "num_bites", "label": "Number of Bites to take", "value": 5 },
-		{"name": "bite_advance", "label": "Depth Increment Per Bite (MM)", "value": 10 },
-		{"name": "dump_offset", "label": "Where to dump excavated soil: Axis, Distance in MM. i.e X, 150", "value": "None" }
+		{"name": "integer", "label": "Integer", "value": 0 }
 	]
 }
