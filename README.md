@@ -1,2 +1,2 @@
-<h1>Audrey II</h1
-<p>Farmware for a custom tool for Farmbot</p>
+<h1Test Bed</h1
+<p>A Farmware test bed.</p>
