@@ -18,4 +18,7 @@ integer = Qualify.integer(PKG, 'integer')
 tools = app.get_toolslots()
 device.log(json.dumps(tools))
 
+tool = Qualify.get_tool(4469)
+devicxe.log(json.dumps(tool))
+
 device.write_pin(PIN_LIGHTS, 0, 0)

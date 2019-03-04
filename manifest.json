@@ -3,7 +3,7 @@
 	"language": "python",
 	"author": "MakotoNinja",
 	"description": "Farmware Test Bed",
-	"version": "1.0.3",
+	"version": "1.0.1",
 	"min_os_version_major": 6,
 	"url": "https://raw.githubusercontent.com/MakotoNinja/test-bed/master/manifest.json",
 	"zip": "https://github.com/MakotoNinja/test-bed/archive/master.zip",
