@@ -19,7 +19,7 @@ tools = app.get_toolslots()
 device.log(json.dumps(tools))
 
 tool = Qualify.get_tool(4469)
-devicxe.log(json.dumps(tool))
+device.log(json.dumps(tool))
 
 plants = app.get_plants()
 device.log(json.dumps(plants))
