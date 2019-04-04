@@ -21,4 +21,7 @@ device.log(json.dumps(tools))
 tool = Qualify.get_tool(4469)
 devicxe.log(json.dumps(tool))
 
+plants = app.get_plants()
+device.log(json.dumps(plants))
+
 device.write_pin(PIN_LIGHTS, 0, 0)
